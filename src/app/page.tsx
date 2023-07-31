@@ -1,9 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { writeDatabase } from "@/helpers";
+import { generateUniqueID } from "@/helpers";
 
 export default function Home() {
-  console.log("db",writeDatabase()) 
   return (
     <main className={styles.main}>
       <div className={styles.description}>

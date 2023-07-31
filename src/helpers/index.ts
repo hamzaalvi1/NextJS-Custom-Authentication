@@ -1,3 +1,8 @@
-import { readDatabase, writeDatabase } from "./dbHelpers";
+import {
+  readDatabase,
+  writeDatabase,
+  generateUniqueID,
+  findUnique,
+} from "./dbHelpers";
 
-export { readDatabase, writeDatabase };
+export { readDatabase, writeDatabase, generateUniqueID, findUnique };
