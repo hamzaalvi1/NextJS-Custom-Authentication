@@ -1,10 +1,13 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+import Link from "next/link";
 export default function Home() {
   return (
-    <>
-      <h2>Hello World</h2>
-    </>
+    <div className={"all-pages"}>
+      <h2>Welcome to Home Page</h2>
+      <div className="all-links">
+        <Link href={"/profile"}>Profile</Link>
+        <Link href={"/login"}>Login</Link>
+        <Link href={"/signup"}>Signup</Link>
+      </div>
+    </div>
   );
 }

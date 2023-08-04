@@ -5,7 +5,9 @@ export async function middleware(request: NextRequest) {
   const authRegex = /^\/api\/auth\/(.*)$/;
   
   if(authRegex.test(request.nextUrl.pathname)){
+    
     console.log("condition successful");
+ 
   }
  
    
