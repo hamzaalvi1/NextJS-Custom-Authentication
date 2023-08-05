@@ -6,3 +6,9 @@ export type User = {
 };
 
 export type WhereType = { name?: string; email?: string; _id?: string };
+
+export type fieldValues = {
+  username: string;
+  email: string;
+  password: string;
+};

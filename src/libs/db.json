@@ -1,10 +1,9 @@
 {
   "users": [
     {
-      "_id": "wV7B2R2zv12gyw5",
-      "name": "hamza",
+      "_id": "DzlL8A6xuMtyn3f",
       "email": "hamza@h.com",
-      "password": "$2a$10$VbCpi0nSmYEYrE9W80zWmOnoCcAAfGo3x23NABHnnEWJ75M6/Gadq"
+      "password": "$2a$10$ZddY40U1VWx0q4YL62.qKeI0ATPcSSgaJL6bfEJvwB21O9VGjt3pi"
     }
   ]
 }

@@ -323,4 +323,5 @@ button[type="submit"] {
   border-radius: 5px;
   font-size: 15px;
   font-family: '__Poppins_6fcd13';
+  cursor: pointer;
 }
