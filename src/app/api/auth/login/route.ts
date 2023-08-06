@@ -1,4 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
+import { cookies } from "next/headers";
 import { findUnique } from "@/helpers";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -33,8 +34,14 @@ export const POST = async (req: NextRequest) => {
       { message: "Successfully Logged in", user: updatedUser },
       { status: 200 }
     );
+    const expirationDate = new Date();
+    expirationDate.setFullYear(expirationDate.getFullYear() + 10);
 
-    response.cookies.set("access_token", token, { httpOnly: true });
+    cookies().set("access_token", token, {
+      httpOnly: true,
+      expires: expirationDate,
+    });
+
     return response;
   } catch (error) {
     console.log(error);

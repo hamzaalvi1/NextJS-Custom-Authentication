@@ -9,7 +9,7 @@ export const GET = () => {
 
 export const POST = async (req: NextRequest) => {
   try {
-    const { name, email, password } = await req.json();
+    const { username, email, password } = await req.json();
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
     if (findUnique(email)) {
@@ -20,7 +20,7 @@ export const POST = async (req: NextRequest) => {
     }
     const newUser: User = {
       _id: generateUniqueID(),
-      name: name,
+      name: username,
       email: email,
       password: hashedPassword,
     };
