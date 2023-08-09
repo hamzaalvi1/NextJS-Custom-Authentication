@@ -1,22 +1,30 @@
-import React from "react";
+"use client";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
-const getMe = async () => {
-  try {
-    const response = await fetch("http://localhost:3000/api/auth/getMe");
-    return response.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
+function ProfilePage() {
+  const [userData, setUserData]: any = useState({});
+  const getUserData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/me");
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const result = await response.json();
+      if (Object.keys(result).length) {
+        setUserData(result?.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-async function ProfilePage() {
-  // const userData = getMe();
-  // const user = await userData;
-  // console.log(user);
+  useEffect(() => {
+    getUserData();
+  }, []);
   return (
     <div className="all-pages">
-      <h2>Welcome to Profile Page</h2>
+      <h2>Welcome to {userData?.name || ""}</h2>
       <div className="all-links">
         <Link href={"/"}>home</Link>
         <Link href={"/login"}>Login</Link>

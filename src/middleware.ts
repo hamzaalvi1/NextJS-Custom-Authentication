@@ -12,9 +12,6 @@ export async function middleware(request: NextRequest) {
   const isPublicPath = path == "/login" || path == "/signup";
   const token = request.cookies.get("access_token");
 
-  if (token && token?.value) {
-    console.log("called");
-  }
   if (isPublicPath && token?.value) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }

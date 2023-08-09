@@ -21,7 +21,7 @@ export const readDatabase = (): DatabaseFn => {
 
 export const writeDatabase = (updatedData: User): DatabaseFn => {
   try {
-    const db = readDatabase();
+    const db = readDatabase(); //{user:[]} //Error*(Error occurred while reading the database.)
     if (db instanceof Error) {
       throw db; // Re-throw the error
     }
