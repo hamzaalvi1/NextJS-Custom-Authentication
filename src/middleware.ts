@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname;
   const isPublicPath = path == "/login" || path == "/signup";
-  const token = request.cookies.get("access_token");
+  const token = request.cookies.get("token");
 
   if (isPublicPath && token?.value) {
     return NextResponse.redirect(new URL("/", request.nextUrl));

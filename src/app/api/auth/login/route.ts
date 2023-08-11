@@ -37,9 +37,9 @@ export const POST = async (req: NextRequest) => {
     const expirationDate = new Date();
     expirationDate.setFullYear(expirationDate.getFullYear() + 10);
 
-    cookies().set("access_token", token, {
+    cookies().set("token", token, {
       httpOnly: true,
-      expires: expirationDate,
+      // expires: expirationDate,
     });
 
     return response;
