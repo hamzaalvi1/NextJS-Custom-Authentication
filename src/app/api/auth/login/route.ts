@@ -39,7 +39,7 @@ export const POST = async (req: NextRequest) => {
 
     cookies().set("token", token, {
       httpOnly: true,
-      // expires: expirationDate,
+      expires: expirationDate,
     });
 
     return response;

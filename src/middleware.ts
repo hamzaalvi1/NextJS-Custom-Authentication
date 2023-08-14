@@ -1,13 +1,9 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import { cookies } from "next/headers";
 
 export async function middleware(request: NextRequest) {
-  // const authRegex = /^\/api\/auth\/(.*)$/;
-  // if(authRegex.test(request.nextUrl.pathname)){
-  //   console.log("condition successful");
-  // }
-  //   return NextResponse.redirect(new URL('/home', request.url))
-
+  const authRegex = /^\/api\/auth\/(.*)$/;
   const path = request.nextUrl.pathname;
   const isPublicPath = path == "/login" || path == "/signup";
   const token = request.cookies.get("token");

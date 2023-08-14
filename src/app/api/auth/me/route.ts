@@ -1,25 +1,23 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { cookies } from "next/headers";
+import { NextResponse, NextRequest } from "next/server";
 import { findUnique } from "@/helpers";
 import jwt from "jsonwebtoken";
+
 type JwtPayload = {
   email: string;
   id: string;
 };
 export async function GET(request: NextRequest) {
   try {
-    const token = cookies().get("token");
-    console.log(token, "token");
-    // console.log(token);
-    // const decodedToken = jwt.verify(
-    //   token,
-    //   process.env.TOKEN_SECRET!
-    // ) as JwtPayload;
-    // const user = findUnique({ _id: decodedToken?.id });
+    const token = request.cookies.get("token")?.value as string;
+    const decodedToken = jwt.verify(
+      token,
+      process.env.TOKEN_SECRET!
+    ) as JwtPayload;
+    const user = findUnique({ _id: decodedToken?.id });
     return NextResponse.json(
       {
-        message: "HEllo world",
-        token,
+        message: "Success",
+        user,
       },
       { status: 200 }
     );

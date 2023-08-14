@@ -13,6 +13,7 @@
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "bcryptjs": "^2.4.3",
+    "cookies-next": "^2.1.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "express-validator": "^7.0.1",
