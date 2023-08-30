@@ -24,7 +24,7 @@ function ProfilePage() {
   }, []);
   return (
     <div className="all-pages">
-      <h2>Welcome to {""}</h2>
+      <h2>Welcome to profile Page {""}</h2>
       <div className="all-links">
         <Link href={"/"}>home</Link>
         <Link href={"/login"}>Login</Link>

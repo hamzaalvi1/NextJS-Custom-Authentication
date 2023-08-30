@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 interface formProps {
   btnTitle: string;
   isLogin?: boolean;
@@ -21,26 +22,13 @@ function Form(props: formProps) {
     setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
   const handleFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    setBtnText("Loading...");
     try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formValues),
+      const getUserCredentials = await signIn("credentials", {
+        ...formValues,
       });
-      const result = await response.json();
-      console.log(result, "result");
-      if (result?.message) {
-        setBtnText("Success");
-        const redirectPath = isLogin ? "/" : "/login";
-        router.push(redirectPath);
-      }
-    } catch (error) {
-      setBtnText("Something went wrong");
-      console.log(error);
-    } finally {
+      console.log(getUserCredentials, "getUserCredentials");
+    } catch (err) {
+      console.log(err, "err");
     }
   };
 

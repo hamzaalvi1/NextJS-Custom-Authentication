@@ -13,17 +13,14 @@
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "bcryptjs": "^2.4.3",
-    "cookies-next": "^2.1.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
-    "express-validator": "^7.0.1",
-    "jsonwebtoken": "^9.0.1",
     "next": "13.4.12",
-    "passport": "^0.6.0",
-    "passport-google-oauth2": "^0.2.0",
+    "next-auth": "^4.23.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
