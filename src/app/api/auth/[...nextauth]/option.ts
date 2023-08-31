@@ -14,7 +14,12 @@ export const options: NextAuthOptions = {
         // This is where you need to retrieve user data
         // to verify with credentials
         // Docs: https://next-auth.js.org/configuration/providers/credentials
-        const user = { id: "42", email: "hamza@h.com", password: "123456" };
+        const user = {
+          id: "42",
+          email: "hamza@h.com",
+          password: "123456",
+          name: "Hamza Ahmed Alvi",
+        };
         if (
           credentials?.email === user.email &&
           credentials?.password === user.password
@@ -27,7 +32,7 @@ export const options: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
   debug: process.env.NODE_ENV !== "production",
   session: {

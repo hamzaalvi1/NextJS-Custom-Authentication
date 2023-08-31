@@ -1,30 +1,16 @@
-"use client";
+import { getServerSession } from "next-auth/next";
+import { options } from "../api/auth/[...nextauth]/option";
+import { redirect } from "next/navigation";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
-function ProfilePage() {
-  const [userData, setUserData]: any = useState({});
-  const getUserData = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/api/auth/me");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
-      if (Object.keys(result).length) {
-        setUserData(result?.data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getUserData();
-  }, []);
+async function ProfilePage() {
+  const session = await getServerSession(options);
+  if (!session) {
+    redirect("/login?callbackUrl=/profile");
+  }
   return (
     <div className="all-pages">
-      <h2>Welcome to profile Page {""}</h2>
+      <h2>Welcome {session?.user?.name}</h2>
       <div className="all-links">
         <Link href={"/"}>home</Link>
         <Link href={"/login"}>Login</Link>

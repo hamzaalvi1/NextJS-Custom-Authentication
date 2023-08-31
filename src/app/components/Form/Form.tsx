@@ -5,11 +5,11 @@ import { signIn } from "next-auth/react";
 interface formProps {
   btnTitle: string;
   isLogin?: boolean;
-  apiUrl: string;
+  callbackUrl: string;
 }
 
 function Form(props: formProps) {
-  const { btnTitle, isLogin = false, apiUrl } = props;
+  const { btnTitle, isLogin = false, callbackUrl } = props;
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
@@ -22,12 +22,19 @@ function Form(props: formProps) {
     setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
   const handleFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    setBtnText("loading...");
     try {
       const getUserCredentials = await signIn("credentials", {
         ...formValues,
+        redirect: false,
       });
-      console.log(getUserCredentials, "getUserCredentials");
+      if (getUserCredentials?.ok && getUserCredentials.status == 200) {
+        alert("success");
+        setBtnText("success");
+        router.push(callbackUrl);
+      }
     } catch (err) {
+      setBtnText("something went wrong");
       console.log(err, "err");
     }
   };
