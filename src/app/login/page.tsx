@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Form } from "../components/Form";
+
 interface ILoginProps {
   params: {};
   searchParams: { callbackUrl: string };

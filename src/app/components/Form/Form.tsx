@@ -75,6 +75,9 @@ function Form(props: formProps) {
           />
         </label>
         <button type="submit">{btnText}</button>
+        <button type="button" onClick={() => signIn("google")}>
+          Sign In With Google
+        </button>
       </form>
     </div>
   );
